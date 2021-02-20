@@ -54,10 +54,16 @@
 #include "Test.h"
 #include "Mapping.h"
 #include "Definition.h"
+#include <time.h>
+
 
 using namespace std;
 
 int main() {
+	time_t tstart, tend;
+	double tresult;
+	tstart=time(NULL);
+
 	gen.seed(0);
 	/* Load in MNIST data */
 	ReadTrainingDataFromFile("patch60000_train.txt", "label60000_train.txt");
@@ -178,6 +184,10 @@ int main() {
 		//printf("\tWrite energy=%.4e J\n", arrayIH->writeEnergy + subArrayIH->writeDynamicEnergy + arrayHO->writeEnergy + subArrayHO->writeDynamicEnergy);
 	}
 	printf("\n");
+	tend=time(NULL);
+	tresult=(double)(tend-tresult);
+	printf("%f\n", tresult);
+
 	return 0;
 }
 
